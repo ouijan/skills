@@ -34,14 +34,19 @@ To add one, add its name to the script and a row to the tables below.
 
 ### [mattpocock/skills](https://github.com/mattpocock/skills)
 
-| Skill             | What it does                                                      |
-| ----------------- | ----------------------------------------------------------------- |
-| `grilling`        | Interviews you in rounds to stress-test a plan or idea.           |
-| `grill-me`        | The earlier, one-question-at-a-time version of `grilling`.        |
-| `grill-with-docs` | `grill-me`, writing ADRs and a glossary as it goes.               |
-| `to-spec`         | Turns the current conversation into a spec on your issue tracker. |
-| `to-tickets`      | Breaks a plan or spec into tickets with blocking edges.           |
-| `wayfinder`       | Plans work too big for one session as a map of decision tickets.  |
+| Skill                      | What it does                                                                           |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `grilling`                 | Interviews you in rounds to stress-test a plan or idea.                                |
+| `grill-with-docs`          | `grilling` plus `domain-modeling`: updates ADRs and the glossary as it goes.           |
+| `domain-modeling`          | Builds a project's domain model: `GLOSSARY.md` and ADRs.                               |
+| `research`                 | Researches a question from primary sources into a Markdown file.                       |
+| `prototype`                | Builds a throwaway prototype to answer a design question.                              |
+| `to-spec`                  | Turns the current conversation into a spec on your issue tracker.                      |
+| `to-tickets`               | Breaks a plan or spec into tickets with blocking edges.                                |
+| `wayfinder`                | Plans work too big for one session as a map of decision tickets.                       |
+| `setup-matt-pocock-skills` | Run once per repo: sets the issue tracker `to-spec`, `to-tickets` and `wayfinder` use. |
+
+`grill-with-docs` and `wayfinder` call `grilling`, `domain-modeling`, `research` and `prototype`, so install them together.
 
 ### [angular/skills](https://github.com/angular/skills)
 
