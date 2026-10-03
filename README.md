@@ -10,7 +10,7 @@ npx skills add ouijan/skills -g -y -a opencode claude-code --skill '*'  # everyt
 npx skills add ouijan/skills -g -y -a opencode claude-code --skill writing-for-agents
 ```
 
-See [Third-party](#third-party) for why the agents are named.
+`-a opencode claude-code` puts each skill in `~/.agents/skills`, which OpenCode, Codex and Pi read, and links it into `~/.claude/skills`. Name agents explicitly: `-a '*'` creates a skills folder for each of the ~50 agents the CLI knows, and `-a claude-code` alone skips `~/.agents/skills`. `-y` matters too: without it the CLI waits for a confirmation, and when run unattended it cancels and still exits 0.
 
 ## Skills
 
@@ -22,7 +22,15 @@ See [Third-party](#third-party) for why the agents are named.
 
 ## Third-party
 
-Skills I use as published, not copied here. Install them from the source so `npx skills update` keeps them current.
+Skills I use as published, not copied here. [`install-third-party.sh`](install-third-party.sh) installs all of them from their source, so `npx skills update` keeps them current:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ouijan/skills/main/install-third-party.sh | bash
+# or, from a clone
+./install-third-party.sh
+```
+
+To add one, add its name to the script and a row to the tables below.
 
 ### [mattpocock/skills](https://github.com/mattpocock/skills)
 
@@ -35,21 +43,11 @@ Skills I use as published, not copied here. Install them from the source so `npx
 | `to-tickets`      | Breaks a plan or spec into tickets with blocking edges.           |
 | `wayfinder`       | Plans work too big for one session as a map of decision tickets.  |
 
-```sh
-npx skills add mattpocock/skills -g -y -a opencode claude-code --skill grilling grill-me grill-with-docs to-spec to-tickets wayfinder
-```
-
 ### [angular/skills](https://github.com/angular/skills)
 
 | Skill               | What it does                                     |
 | ------------------- | ------------------------------------------------ |
 | `angular-developer` | Angular code generation and architecture advice. |
-
-```sh
-npx skills add angular/skills -g -y -a opencode claude-code --skill angular-developer
-```
-
-`-a opencode claude-code` puts each skill in `~/.agents/skills`, which OpenCode, Codex and Pi read, and links it into `~/.claude/skills`. Name agents explicitly: `-a '*'` creates a skills folder for each of the ~50 agents the CLI knows, and `-a claude-code` alone skips `~/.agents/skills`. `-y` matters too: without it the CLI waits for a confirmation, and when run unattended it cancels and still exits 0.
 
 ## Credits
 
