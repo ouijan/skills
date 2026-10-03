@@ -20,19 +20,9 @@ npx skills add ouijan/skills -g -y -a opencode claude-code --skill writing-for-a
 | `unslop`             | Cuts AI tells from writing.                                                          |
 | `writing-for-agents` | A compact guide to writing skills and `AGENTS.md` files that agents follow reliably. |
 
-## Third-party
+### From [mattpocock/skills](https://github.com/mattpocock/skills)
 
-Skills I use as published, not copied here. [`install-third-party.sh`](install-third-party.sh) installs all of them from their source, so `npx skills update` keeps them current:
-
-```sh
-curl -fsSL https://raw.githubusercontent.com/ouijan/skills/main/install-third-party.sh | bash
-# or, from a clone
-./install-third-party.sh
-```
-
-To add one, add its name to the script and a row to the tables below.
-
-### [mattpocock/skills](https://github.com/mattpocock/skills)
+Copied verbatim at [`d81f3a1`](https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60), to be trimmed to how I work. Each `SKILL.md` links its upstream file in `metadata.credits.url`, for diffing against later versions.
 
 | Skill                      | What it does                                                                           |
 | -------------------------- | -------------------------------------------------------------------------------------- |
@@ -46,17 +36,25 @@ To add one, add its name to the script and a row to the tables below.
 | `wayfinder`                | Plans work too big for one session as a map of decision tickets.                       |
 | `setup-matt-pocock-skills` | Run once per repo: sets the issue tracker `to-spec`, `to-tickets` and `wayfinder` use. |
 
-`grill-with-docs` and `wayfinder` call `grilling`, `domain-modeling`, `research` and `prototype`, so install them together.
+`grill-with-docs` and `wayfinder` call `grilling`, `domain-modeling`, `research` and `prototype`. Trim or remove them together.
 
-### [angular/skills](https://github.com/angular/skills)
+## Third-party
 
-| Skill               | What it does                                     |
-| ------------------- | ------------------------------------------------ |
-| `angular-developer` | Angular code generation and architecture advice. |
+Skills I install from their source because they can't be copied here. `angular/skills` has no licence. [`install-third-party.sh`](install-third-party.sh) installs them:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ouijan/skills/main/install-third-party.sh | bash
+# or, from a clone
+./install-third-party.sh
+```
+
+| Skill               | Source                                              | What it does                                     |
+| ------------------- | --------------------------------------------------- | ------------------------------------------------ |
+| `angular-developer` | [angular/skills](https://github.com/angular/skills) | Angular code generation and architecture advice. |
 
 ## Credits
 
-- [mattpocock/skills](https://github.com/mattpocock/skills) - basis for many skills
+- [mattpocock/skills](https://github.com/mattpocock/skills) - basis for many skills, MIT ([licence](LICENSES/mattpocock-skills.txt))
 - [pstack](https://github.com/cursor/plugins/tree/main/pstack) - skill routing & workflow inspiration
 
 ---
