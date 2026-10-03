@@ -5,10 +5,12 @@ Agent skills I use day to day. They work with any agent that reads `SKILL.md` fo
 ## Install
 
 ```sh
-npx skills add ouijan/skills            # pick skills interactively
-npx skills add ouijan/skills -g --all   # everything, user-wide
-npx skills add ouijan/skills -g --skill writing-for-agents
+npx skills add ouijan/skills                                          # pick skills interactively
+npx skills add ouijan/skills -g -y -a opencode claude-code --skill '*'  # everything, user-wide
+npx skills add ouijan/skills -g -y -a opencode claude-code --skill writing-for-agents
 ```
+
+`-a opencode claude-code` puts each skill in `~/.agents/skills`, which OpenCode, Codex and Pi read, and links it into `~/.claude/skills`. Name agents explicitly: `-a '*'` creates a skills folder for each of the ~50 agents the CLI knows, and `-a claude-code` alone skips `~/.agents/skills`. `-y` matters too: without it the CLI waits for a confirmation, and when run unattended it cancels and still exits 0.
 
 ## Skills
 
@@ -20,11 +22,37 @@ npx skills add ouijan/skills -g --skill writing-for-agents
 
 ## Third-party
 
-Skills I use as published. Install them from the source so `npx skills update` keeps them current.
+Skills I use as published, not copied here. [`install-third-party.sh`](install-third-party.sh) installs all of them from their source, so `npx skills update` keeps them current:
 
-| Skill      | Source                                                                                           | Install                                                |
-| ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | `npx skills add mattpocock/skills -g --skill grilling` |
+```sh
+curl -fsSL https://raw.githubusercontent.com/ouijan/skills/main/install-third-party.sh | bash
+# or, from a clone
+./install-third-party.sh
+```
+
+To add one, add its name to the script and a row to the tables below.
+
+### [mattpocock/skills](https://github.com/mattpocock/skills)
+
+| Skill                      | What it does                                                                           |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `grilling`                 | Interviews you in rounds to stress-test a plan or idea.                                |
+| `grill-with-docs`          | `grilling` plus `domain-modeling`: updates ADRs and the glossary as it goes.           |
+| `domain-modeling`          | Builds a project's domain model: `GLOSSARY.md` and ADRs.                               |
+| `research`                 | Researches a question from primary sources into a Markdown file.                       |
+| `prototype`                | Builds a throwaway prototype to answer a design question.                              |
+| `to-spec`                  | Turns the current conversation into a spec on your issue tracker.                      |
+| `to-tickets`               | Breaks a plan or spec into tickets with blocking edges.                                |
+| `wayfinder`                | Plans work too big for one session as a map of decision tickets.                       |
+| `setup-matt-pocock-skills` | Run once per repo: sets the issue tracker `to-spec`, `to-tickets` and `wayfinder` use. |
+
+`grill-with-docs` and `wayfinder` call `grilling`, `domain-modeling`, `research` and `prototype`, so install them together.
+
+### [angular/skills](https://github.com/angular/skills)
+
+| Skill               | What it does                                     |
+| ------------------- | ------------------------------------------------ |
+| `angular-developer` | Angular code generation and architecture advice. |
 
 ## Credits
 
