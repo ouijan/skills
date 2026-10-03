@@ -12,6 +12,18 @@ npx skills add ouijan/skills -g -y -a opencode claude-code --skill writing-for-a
 
 `-a opencode claude-code` puts each skill in `~/.agents/skills`, which OpenCode, Codex and Pi read, and links it into `~/.claude/skills`. Name agents explicitly: `-a '*'` creates a skills folder for each of the ~50 agents the CLI knows, and `-a claude-code` alone skips `~/.agents/skills`. `-y` matters too: without it the CLI waits for a confirmation, and when run unattended it cancels and still exits 0.
 
+### From a clone, kept in sync
+
+`sync.sh` makes the agent skill folders hold exactly this repo's skills, plus those in `third-party.txt`. Edits in the clone go live straight away, because the installed skills are symlinks.
+
+```sh
+./sync.sh                # link skills, install missing third-party ones, list strays
+./sync.sh --prune        # also move strays to ~/.agents/.trash/<timestamp>/
+./sync.sh --keep herdr   # a skill something else manages (repeatable)
+```
+
+It links each skill into `~/.agents/skills` and `~/.claude/skills`. A stray is anything else in those two folders, `~/.config/opencode/skills`, `~/.codex/skills` or `~/.pi/agent/skills`, plus `~/.agents/.skill-lock.json` entries not in `third-party.txt`, which `npx skills update` would otherwise reinstall over the symlinks. It never touches hidden entries (`.system`, `.trash`) or `~/.claude/skills/synced`, which the Claude app owns.
+
 ## Skills
 
 | Skill                | What it does                                                                         |
@@ -40,12 +52,10 @@ Copied verbatim at [`d81f3a1`](https://github.com/mattpocock/skills/tree/d81f3a1
 
 ## Third-party
 
-Skills I install from their source because they can't be copied here. `angular/skills` has no licence. [`install-third-party.sh`](install-third-party.sh) installs them:
+Skills installed from their source because they can't be copied here: `angular/skills` has no licence. [`third-party.txt`](third-party.txt) lists them and `sync.sh` installs any that are missing. Without a clone:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ouijan/skills/main/install-third-party.sh | bash
-# or, from a clone
-./install-third-party.sh
+npx skills add angular/skills -g -y -a opencode claude-code --skill angular-developer
 ```
 
 | Skill               | Source                                              | What it does                                     |
