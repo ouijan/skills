@@ -19,6 +19,7 @@ Update with `npx skills update -g -y`. Keep the `-g`: without it, `-y` picks pro
 | Skill                | What it does                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------ |
 | `orchestrate`        | Runs the session as an orchestrator: delegates to subagents and reports progress.    |
+| `review-reminders`   | Drafts per-reviewer Slack reminders for your open PRs in a repo (needs `gh`, `jq`).  |
 | `unslop`             | Cuts AI tells from writing.                                                          |
 | `writing-for-agents` | A compact guide to writing skills and `AGENTS.md` files that agents follow reliably. |
 
